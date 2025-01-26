@@ -1,0 +1,27 @@
+# Node.js dependencies
+node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# IDE configurations
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+build/
+
+# Other sensitive files (optional)
+*.pem
+*.key
+*.crt
