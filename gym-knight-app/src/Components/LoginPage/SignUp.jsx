@@ -23,10 +23,16 @@ export default function SignUp() {
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(body)
             })
-            console.log(response)
-            setTimeout(() => (navigate("/")), 1000)
+            const data = await response.json()
+            if (response.ok) {
+                alert('Account successfully created!')
+                setTimeout(() => (navigate("/")), 1000)
+            } else {
+                setError(data.error)
+            }
         } catch (error) {
-            console.error(error.message)
+            console.error("Error during signup:", error.message)
+            setError('An error occurred. Please try again.')
         }
     }
 

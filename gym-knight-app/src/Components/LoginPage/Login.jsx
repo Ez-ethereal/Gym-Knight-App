@@ -44,7 +44,7 @@ export default function Login(props) {
             alert('Login successful!')
             props.onLogin()
           } else {
-            setError(data.message)
+            setError(data.error)
           }
         } catch (error) {
           console.error("Error during login:", error.message)
