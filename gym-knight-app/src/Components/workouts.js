@@ -1,3 +1,6 @@
+const workoutPlans = []
+
+/* 
 const workoutPlans = [
     {
       name: "Push",
@@ -48,5 +51,6 @@ const workoutPlans = [
       ]
     }
   ];
-  
+*/
+
 export default workoutPlans

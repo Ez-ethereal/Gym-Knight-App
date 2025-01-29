@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const cookieParser = require('cookie-parser');
 const { verify } = require("jsonwebtoken")
+const { isAuth } = require("./isAuth")
 const cors = require("cors");
 const pool = require("./db");
 const bcrypt = require("bcrypt")
@@ -103,10 +104,21 @@ app.post('/auth/login', async (req, res) => {
 
 app.post('/auth/logout', async (_req, res) => {
     res.clearCookie('refreshtoken')
-    return res.send
+    return res.send({
+        message: 'Logged out'
+    })
 })
 
 // PROTECTED ROUTE
+
+app.get('/me', async(req, res) => {
+    try {
+        const userId = isAuth(req)
+
+    } catch (error) {
+        
+    }
+})
 
 // NEW ACCESS TOKEN WITH REFRESH TOKEN
 

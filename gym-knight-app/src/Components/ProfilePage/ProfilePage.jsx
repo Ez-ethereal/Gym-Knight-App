@@ -11,6 +11,19 @@ import { useNavigate } from "react-router-dom"
 import { nanoid } from "nanoid";
 
 export default function ProfilePage(props) {
+
+  React.useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await fetch("/me", {
+          method: ""
+        })
+      } catch (error) {
+        
+      }
+    }
+  })
+
   const [workouts, setWorkouts] = React.useState(workoutsFile)
   const [buttonPopup, setButtonPopup] = React.useState(false)
   const [showPopup, setShowPopup] = React.useState(false)

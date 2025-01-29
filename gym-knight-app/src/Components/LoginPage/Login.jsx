@@ -9,7 +9,6 @@ export default function Login(props) {
         email: '',
         password: ''
     })
-    const [error, setError] = React.useState(null)
 
     function changeEmail(event) {
         const {value, name} = event.currentTarget
@@ -24,32 +23,8 @@ export default function Login(props) {
     async function handleSubmit(event) {
         console.log(info)
         event.preventDefault()
-
         const {email, password} = info
-
-        if (!email || !password) {
-            setError('Please enter a username and password.')
-            console.log(error)
-            return
-        }
-
-        try {
-          const response = await fetch("http://localhost:5000/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({email: email, password: password})
-          })
-          const data = await response.json()
-          if (response.ok) {
-            alert('Login successful!')
-            props.onLogin()
-          } else {
-            setError(data.error)
-          }
-        } catch (error) {
-          console.error("Error during login:", error.message)
-          setError("An error occurred. Please try again.")
-        }
+        props.onLogin(email, password)
     }
 
     return (
@@ -81,7 +56,7 @@ export default function Login(props) {
               className="w-full p-2 border border-gray-300 rounded-lg"
             />
           </div>
-          {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+          {props.error && <p className="text-red-500 text-sm text-center mb-4">{props.error}</p>}
           <button type="submit" className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 mb-4">
             Login
           </button>
